@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUD_MVVM.Views.AgregarAlumnoView"
+             xmlns:Converter="clr-namespace:CRUD_MVVM.Converters"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:Base64ToImageSource x:Key="Base64ToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="15">
+
+        <Image  x:Name="imagePersona"
+                Source="imgMuestra"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" 
+                WidthRequest="300"
+                HeightRequest="220"
+                IsVisible="{Binding IsImageDefault}">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TomarFotoCommand}"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+        <Image  x:Name="imagePersona2"
+                Source="{Binding Foto,  Converter={StaticResource Base64ToImage}}"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" 
+                WidthRequest="300"
+                HeightRequest="220"
+                IsVisible="{Binding IsImageEdit}">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TomarFotoCommand}"/>
+            </Image.GestureRecognizers>
+
+        </Image>
+        
+
+        <Label Text="Nombre" />
+        <Entry Text="{Binding Nombre}" 
+               Placeholder="Ingrese su nombre"
+               Keyboard="Text"/>
+
+        <Label Text="Apellidos" />
+        <Entry Text="{Binding Apellidos}" 
+               Placeholder="Ingrese sus apellidos"
+               Keyboard="Text"/>
+
+        <Label Text="Edad" />
+        <Entry Text="{Binding Edad}" 
+               Placeholder="Ingrese su edad"
+               Keyboard="Numeric"/>
+
+        <Label Text="Direccion" />
+        <Entry Text="{Binding Direccion}" 
+               Placeholder="Ingrese su direccion"
+               Keyboard="Text"/>
+
+        <Label Text="Puesto Trabajo" />
+        <Entry Text="{Binding Puesto}" 
+               Placeholder="Ingrese su puesto de trabajo"
+               Keyboard="Text"/>
+
+        <Button Text="Salvar"
+                CornerRadius="10"
+                Command="{Binding GuardarCommand}"
+                VerticalOptions="EndAndExpand"/>
+
+        <Button Text="Listar"
+                CornerRadius="10"
+                Command="{Binding ListarCommand}"/>
+
+    </StackLayout>
+</ContentPage>
