@@ -120,7 +120,7 @@ namespace CRUD_MVVM.ViewModels
         #endregion
 
 
-        public AgregarAlumnoViewModel(Image imageParam, string opcionReceived, Persona personaReceived)
+        public AgregarAlumnoViewModel(Image imageParam, string opcionReceived, Alumno personaReceived)
         {
             imagenPersona = imageParam;
             services = new PersonaServices();
@@ -143,7 +143,7 @@ namespace CRUD_MVVM.ViewModels
             ListarCommand = new Command(() => ListarPersonas());
         }
 
-        private void CargarParaEditar(Persona personaReceived)
+        private void CargarParaEditar(Alumno personaReceived)
         {
             Nombre = personaReceived.Nombre;
             Apellidos = personaReceived.Apellidos;
@@ -163,7 +163,7 @@ namespace CRUD_MVVM.ViewModels
                 return;
             }
 
-            Persona persona = new Persona()
+            Alumno persona = new Alumno()
             {
                 Nombre = Nombre,
                 Apellidos = Apellidos,
@@ -179,7 +179,7 @@ namespace CRUD_MVVM.ViewModels
                 bool confirm = await services.UpdatePerson(persona, key);
                 if (confirm)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Persona actualizada correctamente.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Alumno actualizada correctamente.", "Ok");
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
                 else
@@ -193,7 +193,7 @@ namespace CRUD_MVVM.ViewModels
                 bool confirm = await services.InsertarPersona(persona);
                 if (confirm)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Persona registrada correctamente.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Alumno registrada correctamente.", "Ok");
                     Limpiar();
                 }
                 else

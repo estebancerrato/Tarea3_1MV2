@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CRUD_MVVM.Models
 {
-    public class Persona
+    public class Alumno
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

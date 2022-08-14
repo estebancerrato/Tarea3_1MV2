@@ -14,14 +14,14 @@ namespace CRUD_MVVM.Services
 {
     public class PersonaServices
     {
-        public async Task<bool> InsertarPersona(Persona persona)
+        public async Task<bool> InsertarPersona(Alumno persona)
         {
             bool response = false;
             try
             {
                 await Conexion.firebase
-                .Child("Persona")
-                .PostAsync(new Persona()
+                .Child("Alumno")
+                .PostAsync(new Alumno()
                 {
                     Nombre = persona.Nombre,
                     Apellidos = persona.Apellidos,
@@ -40,13 +40,13 @@ namespace CRUD_MVVM.Services
             return response;
         }
 
-        public async Task<List<Persona>> ListarPersonas()
+        public async Task<List<Alumno>> ListarPersonas()
         {
             try
             {
                 var data = (await Conexion.firebase
-                            .Child("Persona")
-                            .OnceAsync<Persona>()).Select(item => new Persona
+                            .Child("Alumno")
+                            .OnceAsync<Alumno>()).Select(item => new Alumno
                             {
                                 Key = item.Key, // This is the ID
                                 Nombre = item.Object.Nombre,
@@ -71,7 +71,7 @@ namespace CRUD_MVVM.Services
             bool response = false;
             try
             {
-                await Conexion.firebase.Child("Persona").Child(key).DeleteAsync();
+                await Conexion.firebase.Child("Alumno").Child(key).DeleteAsync();
                 response = true;
             }
             catch (Exception ex)
@@ -82,13 +82,13 @@ namespace CRUD_MVVM.Services
             return response;
         }
 
-        public async Task<bool> UpdatePerson(Persona persona, string key)
+        public async Task<bool> UpdatePerson(Alumno persona, string key)
         {
             bool response = false;
             try
             {
                 await Conexion.firebase
-                              .Child("Persona")
+                              .Child("Alumno")
                               .Child(key)
                               .PutAsync(persona);
                 response = true;

@@ -14,10 +14,10 @@ namespace CRUD_MVVM.ViewModels
     public class ListarAlumnosViewModel : BaseViewModels
     {
 
-        private List<Persona> _ListaPersonas;
+        private List<Alumno> _ListaPersonas;
         PersonaServices personaServices;
 
-        public List<Persona> ListaPersonas
+        public List<Alumno> ListaPersonas
         {
             get { return _ListaPersonas; }
             set { 
@@ -29,11 +29,11 @@ namespace CRUD_MVVM.ViewModels
         public ListarAlumnosViewModel() {
             personaServices = new PersonaServices();
 
-            EditarPersonaCommand = new Command<Persona>(async (Persona) => await EditarPersona(Persona));
-            EliminarPersonaCommand = new Command<Persona>(async (Persona) => await EliminarPersona(Persona));
+            EditarPersonaCommand = new Command<Alumno>(async (Persona) => await EditarPersona(Persona));
+            EliminarPersonaCommand = new Command<Alumno>(async (Persona) => await EliminarPersona(Persona));
         }
 
-        private async Task EliminarPersona(Persona persona)
+        private async Task EliminarPersona(Alumno persona)
         {
             bool confirm = await Application.Current.MainPage.DisplayAlert("Advertencia", "¿Esta seguro de eliminar a " + persona.Nombre + "?", "Si", "No");
 
@@ -42,7 +42,7 @@ namespace CRUD_MVVM.ViewModels
                 bool response = await personaServices.DeletePerson(persona.Key);
                 if (response)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Advertencia", "Persona Eliminada Correctamente", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Advertencia", "Alumno Eliminada Correctamente", "Ok");
                     CargarDatos();
                 }
                 else
@@ -52,7 +52,7 @@ namespace CRUD_MVVM.ViewModels
             }
         }
 
-        private async Task EditarPersona(Persona persona)
+        private async Task EditarPersona(Alumno persona)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new AgregarAlumnoView("Editar", persona));
         }

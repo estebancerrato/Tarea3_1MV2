@@ -14,7 +14,7 @@ namespace CRUD_MVVM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgregarAlumnoView : ContentPage
     {
-        public AgregarAlumnoView(string opcion = "Guardar", Persona persona = null)
+        public AgregarAlumnoView(string opcion = "Guardar", Alumno persona = null)
         {
             InitializeComponent();
             if (opcion.Equals("Guardar"))
