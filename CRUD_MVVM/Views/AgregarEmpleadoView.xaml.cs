@@ -1,5 +1,5 @@
-﻿using CRUD_MVVM.Models;
-using CRUD_MVVM.ViewModels;
+﻿using Tarea3_1MV2.Models;
+using Tarea3_1MV2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CRUD_MVVM.Views
+namespace Tarea3_1MV2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgregarAlumnoView : ContentPage
     {
-        public AgregarAlumnoView(string opcion = "Guardar", Alumno persona = null)
+        public AgregarAlumnoView(string opcion = "Guardar", Empleado persona = null)
         {
             InitializeComponent();
             if (opcion.Equals("Guardar"))
             {
-                BindingContext = new AgregarAlumnoViewModel(imagePersona, opcion, persona);
+                BindingContext = new AgregarEmpleadoViewModel(imagePersona, opcion, persona);
             }
             else
             {
-                BindingContext = new AgregarAlumnoViewModel(imagePersona2, opcion, persona);
+                BindingContext = new AgregarEmpleadoViewModel(imagePersona2, opcion, persona);
             }
         }
     }

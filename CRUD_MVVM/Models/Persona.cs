@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CRUD_MVVM.Models
+namespace Tarea3_1MV2.Models
 {
-    public class Alumno
+    public class Empleado
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

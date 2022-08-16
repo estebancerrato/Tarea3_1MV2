@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace CRUD_MVVM.ViewModels
+namespace Tarea3_1MV2.ViewModels
 {
     public class BaseViewModels : INotifyPropertyChanged
     {

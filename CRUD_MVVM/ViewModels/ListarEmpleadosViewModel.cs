@@ -1,6 +1,6 @@
-﻿using CRUD_MVVM.Models;
-using CRUD_MVVM.Services;
-using CRUD_MVVM.Views;
+﻿using Tarea3_1MV2.Models;
+using Tarea3_1MV2.Services;
+using Tarea3_1MV2.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace CRUD_MVVM.ViewModels
+namespace Tarea3_1MV2.ViewModels
 {
-    public class ListarAlumnosViewModel : BaseViewModels
+    public class ListarEmpleadosViewModel : BaseViewModels
     {
 
-        private List<Alumno> _ListaPersonas;
-        PersonaServices personaServices;
+        private List<Empleado> _ListaPersonas;
+        EmpleadoServices personaServices;
 
-        public List<Alumno> ListaPersonas
+        public List<Empleado> ListaPersonas
         {
             get { return _ListaPersonas; }
             set { 
@@ -26,23 +26,23 @@ namespace CRUD_MVVM.ViewModels
             }
         }
 
-        public ListarAlumnosViewModel() {
-            personaServices = new PersonaServices();
+        public ListarEmpleadosViewModel() {
+            personaServices = new EmpleadoServices();
 
-            EditarPersonaCommand = new Command<Alumno>(async (Persona) => await EditarPersona(Persona));
-            EliminarPersonaCommand = new Command<Alumno>(async (Persona) => await EliminarPersona(Persona));
+            EditarPersonaCommand = new Command<Empleado>(async (Persona) => await EditarPersona(Persona));
+            EliminarPersonaCommand = new Command<Empleado>(async (Persona) => await EliminarPersona(Persona));
         }
 
-        private async Task EliminarPersona(Alumno persona)
+        private async Task EliminarPersona(Empleado persona)
         {
             bool confirm = await Application.Current.MainPage.DisplayAlert("Advertencia", "¿Esta seguro de eliminar a " + persona.Nombre + "?", "Si", "No");
 
             if (confirm)
             {
-                bool response = await personaServices.DeletePerson(persona.Key);
+                bool response = await personaServices.EliminarEmpleado(persona.Key);
                 if (response)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Advertencia", "Alumno Eliminada Correctamente", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Advertencia", "Empleado Eliminado Correctamente", "Ok");
                     CargarDatos();
                 }
                 else
@@ -52,14 +52,14 @@ namespace CRUD_MVVM.ViewModels
             }
         }
 
-        private async Task EditarPersona(Alumno persona)
+        private async Task EditarPersona(Empleado persona)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new AgregarAlumnoView("Editar", persona));
         }
 
         public async void CargarDatos()
         {
-            ListaPersonas = await personaServices.ListarPersonas();
+            ListaPersonas = await personaServices.ListarEmpleados();
             if (ListaPersonas.Count == 0)
             {
                 await Application.Current.MainPage.DisplayAlert("Advertencia", "No hay personas registradas", "Ok");

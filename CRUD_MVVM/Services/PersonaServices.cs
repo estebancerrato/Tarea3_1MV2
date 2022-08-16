@@ -1,6 +1,6 @@
-﻿using CRUD_MVVM.Firebase;
+﻿using Tarea3_1MV2.Firebase;
 using Firebase.Database.Query;
-using CRUD_MVVM.Models;
+using Tarea3_1MV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,25 +10,25 @@ using Firebase.Database;
 using System.Diagnostics;
 using System.Linq;
 
-namespace CRUD_MVVM.Services
+namespace Tarea3_1MV2.Services
 {
-    public class PersonaServices
+    public class EmpleadoServices
     {
-        public async Task<bool> InsertarPersona(Alumno persona)
+        public async Task<bool> GuardarEmpleado(Empleado empleado)
         {
             bool response = false;
             try
             {
                 await Conexion.firebase
-                .Child("Alumno")
-                .PostAsync(new Alumno()
+                .Child("Empleado")
+                .PostAsync(new Empleado()
                 {
-                    Nombre = persona.Nombre,
-                    Apellidos = persona.Apellidos,
-                    Edad = persona.Edad,
-                    Direccion = persona.Direccion,
-                    Puesto = persona.Puesto,
-                    Foto = persona.Foto
+                    Nombre = empleado.Nombre,
+                    Apellidos = empleado.Apellidos,
+                    Edad = empleado.Edad,
+                    Direccion = empleado.Direccion,
+                    Puesto = empleado.Puesto,
+                    Foto = empleado.Foto
                 });
                 response = true;
             }
@@ -40,13 +40,13 @@ namespace CRUD_MVVM.Services
             return response;
         }
 
-        public async Task<List<Alumno>> ListarPersonas()
+        public async Task<List<Empleado>> ListarEmpleados()
         {
             try
             {
                 var data = (await Conexion.firebase
-                            .Child("Alumno")
-                            .OnceAsync<Alumno>()).Select(item => new Alumno
+                            .Child("Empleado")
+                            .OnceAsync<Empleado>()).Select(item => new Empleado
                             {
                                 Key = item.Key, // This is the ID
                                 Nombre = item.Object.Nombre,
@@ -66,12 +66,12 @@ namespace CRUD_MVVM.Services
             return null;
         }
 
-        public async Task<bool> DeletePerson(string key)
+        public async Task<bool> EliminarEmpleado(string key)
         {
             bool response = false;
             try
             {
-                await Conexion.firebase.Child("Alumno").Child(key).DeleteAsync();
+                await Conexion.firebase.Child("Empleado").Child(key).DeleteAsync();
                 response = true;
             }
             catch (Exception ex)
@@ -82,15 +82,15 @@ namespace CRUD_MVVM.Services
             return response;
         }
 
-        public async Task<bool> UpdatePerson(Alumno persona, string key)
+        public async Task<bool> ActualizarEmpleado(Empleado empleado, string id)
         {
             bool response = false;
             try
             {
                 await Conexion.firebase
-                              .Child("Alumno")
-                              .Child(key)
-                              .PutAsync(persona);
+                              .Child("Empleado")
+                              .Child(id)
+                              .PutAsync(empleado);
                 response = true;
             }
             catch (Exception ex)

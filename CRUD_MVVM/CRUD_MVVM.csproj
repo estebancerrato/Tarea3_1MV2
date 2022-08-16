@@ -18,16 +18,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\AgregarAlumnoView.xaml.cs">
+    <Compile Update="Views\AgregarEmpleadoView.xaml.cs">
       <DependentUpon>AgregarAlumnoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ListarEmpleadosView.xaml.cs">
+      <DependentUpon>ListarEmpleadosView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AgregarAlumnoView.xaml">
+    <EmbeddedResource Update="Views\AgregarEmpleadoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ListarAlumnosView.xaml">
+    <EmbeddedResource Update="Views\ListarEmpleadosView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

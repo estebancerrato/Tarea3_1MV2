@@ -1,7 +1,7 @@
-﻿using CRUD_MVVM.Firebase;
-using CRUD_MVVM.Models;
-using CRUD_MVVM.Services;
-using CRUD_MVVM.Views;
+﻿using Tarea3_1MV2.Firebase;
+using Tarea3_1MV2.Models;
+using Tarea3_1MV2.Services;
+using Tarea3_1MV2.Views;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -14,9 +14,9 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace CRUD_MVVM.ViewModels
+namespace Tarea3_1MV2.ViewModels
 {
-    public class AgregarAlumnoViewModel : BaseViewModels
+    public class AgregarEmpleadoViewModel : BaseViewModels
     {
 
         #region VARIABLES
@@ -28,7 +28,7 @@ namespace CRUD_MVVM.ViewModels
         private string _Puesto;
         private string _Foto;
         Image imagenPersona;
-        PersonaServices services;
+        EmpleadoServices services;
         private string opcion;
         private string key;
         private bool _IsImageDefault;
@@ -120,10 +120,10 @@ namespace CRUD_MVVM.ViewModels
         #endregion
 
 
-        public AgregarAlumnoViewModel(Image imageParam, string opcionReceived, Alumno personaReceived)
+        public AgregarEmpleadoViewModel(Image imageParam, string opcionReceived, Empleado personaReceived)
         {
             imagenPersona = imageParam;
-            services = new PersonaServices();
+            services = new EmpleadoServices();
             opcion = opcionReceived;
 
             if (opcion.Equals("Editar"))
@@ -139,11 +139,11 @@ namespace CRUD_MVVM.ViewModels
             }
 
             TomarFotoCommand = new Command(async () => await TomarFoto());
-            GuardarCommand = new Command(() => GuardarPersona());
-            ListarCommand = new Command(() => ListarPersonas());
+            GuardarCommand = new Command(() => GuardarEmpleado());
+            ListarCommand = new Command(() => ListarEmpleados());
         }
 
-        private void CargarParaEditar(Alumno personaReceived)
+        private void CargarParaEditar(Empleado personaReceived)
         {
             Nombre = personaReceived.Nombre;
             Apellidos = personaReceived.Apellidos;
@@ -154,7 +154,7 @@ namespace CRUD_MVVM.ViewModels
             key = personaReceived.Key;
         }
 
-        private async void GuardarPersona()
+        private async void GuardarEmpleado()
         {
             string response = ValidarCampos();
             if (!response.Equals("OK"))
@@ -163,7 +163,7 @@ namespace CRUD_MVVM.ViewModels
                 return;
             }
 
-            Alumno persona = new Alumno()
+            Empleado persona = new Empleado()
             {
                 Nombre = Nombre,
                 Apellidos = Apellidos,
@@ -176,10 +176,10 @@ namespace CRUD_MVVM.ViewModels
             if (opcion.Equals("Editar"))
             {
                 // EDITAR
-                bool confirm = await services.UpdatePerson(persona, key);
+                bool confirm = await services.ActualizarEmpleado(persona, key);
                 if (confirm)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Alumno actualizada correctamente.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Empleado actualizado correctamente.", "Ok");
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
                 else
@@ -190,15 +190,15 @@ namespace CRUD_MVVM.ViewModels
             else
             {
                 // GUARDAR
-                bool confirm = await services.InsertarPersona(persona);
+                bool confirm = await services.GuardarEmpleado(persona);
                 if (confirm)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Alumno registrada correctamente.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Empleado registrado correctamente.", "Ok");
                     Limpiar();
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Se produjo un error al registrar la persona.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Confirmacion", "Se produjo un error al registrar al empleado", "Ok");
                 }
             }
             
@@ -267,7 +267,7 @@ namespace CRUD_MVVM.ViewModels
             return Regex.IsMatch(text, @"^[0-9]*$");
         }
 
-        private async void ListarPersonas()
+        private async void ListarEmpleados()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new ListarAlumnosView());
         }

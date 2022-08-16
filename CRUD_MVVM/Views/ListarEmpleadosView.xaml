@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CRUD_MVVM.Views.ListarAlumnosView"
+             x:Class="Tarea3_1MV2.Views.ListarAlumnosView"
              x:Name="CurrentPage"
-             xmlns:Converter="clr-namespace:CRUD_MVVM.Converters"
+             xmlns:Converter="clr-namespace:Tarea3_1MV2.Converters"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -32,13 +32,13 @@
                             <SwipeItems>
                                 <SwipeItem Text="Edit"
                                            IconImageSource="editar.png"
-                                           BackgroundColor="#21618C"
+                                           BackgroundColor="#008000"
                                            Command="{Binding Source={x:Reference CurrentPage}, Path=BindingContext.EditarPersonaCommand}"
                                            CommandParameter="{Binding .}"/>
 
                                 <SwipeItem Text="Delete"
                                            IconImageSource="eliminar.png"
-                                           BackgroundColor="#CF9D9D"
+                                           BackgroundColor="#FF0000"
                                            Command="{Binding Source={x:Reference CurrentPage}, Path=BindingContext.EliminarPersonaCommand}"
                                            CommandParameter="{Binding .}"/>
 

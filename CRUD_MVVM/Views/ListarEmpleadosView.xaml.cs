@@ -1,4 +1,4 @@
-﻿using CRUD_MVVM.ViewModels;
+﻿using Tarea3_1MV2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CRUD_MVVM.Views
+namespace Tarea3_1MV2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListarAlumnosView : ContentPage
     {
-        ListarAlumnosViewModel listarAlumnosViewModel;
+        ListarEmpleadosViewModel listarAlumnosViewModel;
         public ListarAlumnosView()
         {
             InitializeComponent();
-            listarAlumnosViewModel = new ListarAlumnosViewModel();
+            listarAlumnosViewModel = new ListarEmpleadosViewModel();
             BindingContext = listarAlumnosViewModel;
         }
 

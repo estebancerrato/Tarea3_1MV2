@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_MVVM.Android", "CRUD_MVVM.Android\CRUD_MVVM.Android.csproj", "{EAC9AF36-BC88-4BC5-A337-88BF8ED409D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_MVVM", "CRUD_MVVM\CRUD_MVVM.csproj", "{48E42C0F-4156-4DDF-BBDA-1260093C6A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_MVVM", "CRUD_MVVM\CRUD_MVVM.csproj", "{48E42C0F-4156-4DDF-BBDA-1260093C6A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

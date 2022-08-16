@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using Xamarin.Forms;
 
-namespace CRUD_MVVM.Converters
+namespace Tarea3_1MV2.Converters
 {
     public class Base64ToImageSource : IValueConverter
     {

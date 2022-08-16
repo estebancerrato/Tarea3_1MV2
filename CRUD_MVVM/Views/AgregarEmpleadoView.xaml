@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CRUD_MVVM.Views.AgregarAlumnoView"
-             xmlns:Converter="clr-namespace:CRUD_MVVM.Converters"
+             xmlns:Converter="clr-namespace:Tarea3_1MV2.Converters"
+             x:Class="Tarea3_1MV2.Views.AgregarAlumnoView"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -26,6 +26,7 @@
             </Image.GestureRecognizers>
 
         </Image>
+        
         <Image  x:Name="imagePersona2"
                 Source="{Binding Foto,  Converter={StaticResource Base64ToImage}}"
                 Aspect="AspectFit"
@@ -48,13 +49,12 @@
 
         <Label Text="Apellidos" />
         <Entry Text="{Binding Apellidos}" 
-               Placeholder="Ingrese sus apellidos"
+               Placeholder="Ingrese su apellido"
                Keyboard="Text"/>
 
         <Label Text="Edad" />
-        <Entry Text="{Binding Edad}" 
-               Placeholder="Ingrese su edad"
-               Keyboard="Numeric"/>
+        <Entry Text="{Binding Edad}" Placeholder="Ingrese su edad"
+               Keyboard="Numeric" MaxLength="2"/>
 
         <Label Text="Direccion" />
         <Entry Text="{Binding Direccion}" 
@@ -62,18 +62,11 @@
                Keyboard="Text"/>
 
         <Label Text="Puesto Trabajo" />
-        <Entry Text="{Binding Puesto}" 
-               Placeholder="Ingrese su puesto de trabajo"
-               Keyboard="Text"/>
+        <Entry Text="{Binding Puesto}" Placeholder="Ingrese su puesto de trabajo" Keyboard="Text"/>
 
-        <Button Text="Salvar"
-                CornerRadius="10"
-                Command="{Binding GuardarCommand}"
-                VerticalOptions="EndAndExpand"/>
+        <Button Text="Guardar" Command="{Binding GuardarCommand}" />
 
-        <Button Text="Listar"
-                CornerRadius="10"
-                Command="{Binding ListarCommand}"/>
+        <Button Text="Listar Empleados" Command="{Binding ListarCommand}"/>
 
     </StackLayout>
 </ContentPage>

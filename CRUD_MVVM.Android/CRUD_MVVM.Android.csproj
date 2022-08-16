@@ -94,18 +94,18 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRUD_MVVM\CRUD_MVVM.csproj">
-      <Project>{436A8111-7EAB-4005-9A44-10D5729987CD}</Project>
+      <Project>{48E42C0F-4156-4DDF-BBDA-1260093C6A43}</Project>
       <Name>CRUD_MVVM</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\imgMuestra.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\eliminar.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\imgMuestra.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CRUD_MVVM.Firebase
+namespace Tarea3_1MV2.Firebase
 {
     public class Conexion
     {
-        public static FirebaseClient firebase = new FirebaseClient("https://mvvmguia-35c53-default-rtdb.firebaseio.com/");
+        public static FirebaseClient firebase = new FirebaseClient("https://xamarin3-2mv2-default-rtdb.firebaseio.com/");
     }
 }

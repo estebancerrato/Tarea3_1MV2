@@ -1,9 +1,9 @@
-﻿using CRUD_MVVM.Views;
+﻿using Tarea3_1MV2.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CRUD_MVVM
+namespace Tarea3_1MV2
 {
     public partial class App : Application
     {
